@@ -4,7 +4,7 @@
     {
       "src": [
         {
-          "src": "../FarsiType.Net",
+          "src": "../FarsiType.Net/",
           "files": [
             "**/*.csproj"
           ]
