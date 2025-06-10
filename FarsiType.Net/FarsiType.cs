@@ -153,9 +153,11 @@ namespace FarsiTypeNet
         /// </summary>
         /// <param name="c">The character to check.</param>
         /// <returns>True if the character is Farsi-compatible; otherwise, false.</returns>
-        public static bool IsFarsiCompatible(char c)
+        public static bool IsFarsiCompatible(char c, bool farsiSpecials = true)
         {
-            return (c >= '\u0600' && c <= '\u06FF')  // Farsi block
+            
+            return (farsiSpecials && (c == '\r' || c=='\n')) || (farsiSpecials && c == '.')
+                || (c >= '\u0600' && c <= '\u06FF')  // Farsi block
                 || (c >= '\u0750' && c <= '\u077F')  // Arabic Supplement
                 || (c >= '\u08A0' && c <= '\u08FF')  // Arabic Extended-A
                 || (c >= '\uFB50' && c <= '\uFDFF')  // Arabic Presentation Forms-A
@@ -251,7 +253,7 @@ namespace FarsiTypeNet
         /// <returns>True if the character can connect to the next; otherwise, false.</returns>
         public static bool IsConnectedToNext(char c)
         {
-            if (IsNothing(c) || !IsFarsiCompatible(c))
+            if (IsNothing(c) || !IsFarsiCompatible(c, false))
             {
                 return false;
             }
@@ -276,6 +278,9 @@ namespace FarsiTypeNet
         {
             switch (c)
             {
+                case '\r':
+                case '\n':
+                case '.':
                 case '\u061F': // Arabic question mark
                 case '\u060C': // Arabic comma
                 case '\u061B': // Arabic semicolon
