@@ -218,6 +218,10 @@ namespace FarsiTypeNet
         /// <returns>The string with word order reversed for RTL display.</returns>
         public static string ReverseWordsPlacement(string text)
         {
+            if (text.Length <= 0)
+            {
+                return "";
+            }
             bool isFarsi = IsFarsiCompatible(text[text.Length - 1]);
             StringBuilder result = new StringBuilder(text.Length + 10);
             int segmentStart = text.Length - 1;
