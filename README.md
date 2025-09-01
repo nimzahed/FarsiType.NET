@@ -28,4 +28,4 @@ I wanted to use RTL text in [ImGui.NET](https://github.com/ImGuiNET/ImGui.NET) (
 ## compatibility
 - .net-standard2.1
 - .net8.0, 9.0, above
-- Native Aot Compatible ( So every language that support C/CPP )
+- Native Aot Compatible ( So every language that supports C/CPP )
